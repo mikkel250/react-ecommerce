@@ -26,8 +26,11 @@ const Header = ({currentUser}) => (
   </div>
 );
 
-const mapStateToProps = state => ({
+// mapStateToProps and connect are used any time we want properties from the reducers 
+const mapStateToProps = state => ({ // state here is being pulled by redux from the root reducer
+  // property   value 
   currentUser: state.user.currentUser
 });
 
+// connect returns a higher order component that takes our component (Header) and that returns a new "souped up" component that has access to the properties in the reducers
 export default connect(mapStateToProps)(Header);

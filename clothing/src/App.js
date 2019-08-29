@@ -14,7 +14,7 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser } = this.props; // destructure setCurrentUser so it can be called directly insted of this.props.SetCurrentUser
+    const { setCurrentUser } = this.props; // destructure setCurrentUser so it can be called directly below instead of this.props.SetCurrentUser
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
