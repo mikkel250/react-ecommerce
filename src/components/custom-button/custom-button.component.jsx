@@ -1,7 +1,7 @@
-import React from "react";
-import { CustomButtonContainer } from "./custom-button.styles";
+import React from 'react';
 
-//an example of styled components instead of using CSS
+import { CustomButtonContainer } from './custom-button.styles';
+
 const CustomButton = ({ children, ...props }) => (
   <CustomButtonContainer {...props}>{children}</CustomButtonContainer>
 );
