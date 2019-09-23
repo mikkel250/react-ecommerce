@@ -17,4 +17,4 @@ handleClick = () => {
   )
 }
 
-// 9.20 stopped at lecture 181 10:31 refactoring user sagas
+// 9.22 stopped at lecture 185 8:00 shows exercise he recommends writing own saga for the sign in component
