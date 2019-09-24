@@ -6,7 +6,9 @@ import {
   signInSuccess,
   signInFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  signUpSuccess,
+  signUpFailure
 } from "./user.actions";
 
 import {
@@ -64,7 +66,26 @@ export function* signOut() {
 }
 
 export function* signUp({payload: {displayName, email, password, confirmPassword}}) => {
+    try {
+      const { user } = yield auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
 
+      yield createUserProfileDocument(user, { displayName });
+      yield put(signUpSuccess());
+
+// don't need this for redux
+      // this.setState({
+      //   displayName: '',
+      //   email: '',
+      //   password: '',
+      //   confirmPassword: ''
+      // });
+    } catch (error) {
+      yield signUpFailure(error);
+    }
+  };
 }
 
 export function* onGoogleSignInStart() {

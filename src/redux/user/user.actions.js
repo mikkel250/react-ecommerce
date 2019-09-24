@@ -36,10 +36,12 @@ export const signOutFailure = error => ({
   payload: error
 });
 
-export const signUpStart = () => ({
-  type: UserActionTypes.SIGN_UP_START
+export const signUpStart = displayNameEmailAndPassword => ({
+  type: UserActionTypes.SIGN_UP_START,
+  payload: displayNameEmailAndPassword
 });
 
+//this should have some payload -- at least an alert or something to indicate success
 export const signUpSuccess = () => ({
   type: UserActionTypes.SIGN_UP_SUCCESS
 });
