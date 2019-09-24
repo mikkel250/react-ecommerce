@@ -36,14 +36,15 @@ export const signOutFailure = error => ({
   payload: error
 });
 
-export const signUpStart = displayNameEmailAndPassword => ({
+export const signUpStart = userCredentials => ({
   type: UserActionTypes.SIGN_UP_START,
-  payload: displayNameEmailAndPassword
+  payload: userCredentials
 });
 
 //this should have some payload -- at least an alert or something to indicate success
-export const signUpSuccess = () => ({
-  type: UserActionTypes.SIGN_UP_SUCCESS
+export const signUpSuccess = ({ user, addtionalData }) => ({
+  type: UserActionTypes.SIGN_UP_SUCCESS,
+  payload: { user, addtionalData }    // need to pass in the user data to firebase.utils createUserDocument   userRef.set  call
 });
 
 export const signUpFailure = error => ({
