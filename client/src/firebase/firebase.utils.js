@@ -3,13 +3,13 @@ import "firebase/firestore";
 import "firebase/auth";
 //require('dotenv').config();
 
-// const apiKey = process.env.REACT_APP_FIREBASE_API_KEY;
-// const dbUrl = process.env.REACT_APP_FIREBASE_DB_URL;
+const apiKey = process.env.REACT_APP_FIREBASE_API_KEY;
+const dbUrl = process.env.REACT_APP_FIREBASE_DB_URL;
 
 const config = {
-  apiKey: "AIzaSyBgaT7_Tj8ZZLZERjP8vMVJJn0FGzKcoVo",
+  apiKey: apiKey,
   authDomain: "clothing-db-61ccf.firebaseapp.com",
-  databaseURL: "https://clothing-db-61ccf.firebaseio.com",
+  databaseURL: dbUrl,
   projectId: "clothing-db-61ccf",
   storageBucket: "",
   messagingSenderId: "615782782215",
@@ -81,9 +81,9 @@ export const getCurrentUser = () => {
     const unsubscribe = auth.onAuthStateChanged(userAuth => {
       unsubscribe();
       resolve(userAuth);
-    }, reject)
+    }, reject);
   });
-}
+};
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
