@@ -1,17 +1,17 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
-//require('dotenv').config();
+//require("dotenv").config();
 
-const apiKey = process.env.REACT_APP_FIREBASE_API_KEY;
-const dbUrl = process.env.REACT_APP_FIREBASE_DB_URL;
+// const apiKey = process.env.REACT_APP_FIREBASE_API_KEY;
+// const dbUrl = process.env.REACT_APP_FIREBASE_DB_URL;
 
 const config = {
-  apiKey: apiKey,
+  apiKey: "AIzaSyBgaT7_Tj8ZZLZERjP8vMVJJn0FGzKcoVo",
   authDomain: "clothing-db-61ccf.firebaseapp.com",
-  databaseURL: dbUrl,
+  databaseURL: "https://clothing-db-61ccf.firebaseio.com",
   projectId: "clothing-db-61ccf",
-  storageBucket: "",
+  storageBucket: "clothing-db-61ccf.appspot.com",
   messagingSenderId: "615782782215",
   appId: "1:615782782215:web:d367bcdd2cbb9d4e"
 };
