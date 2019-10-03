@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const CheckoutPageContainer = styled.div`
   width: 55%;
@@ -11,6 +11,10 @@ export const CheckoutPageContainer = styled.div`
   button {
     margin-left: auto;
     margin-top: 50px;
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 90%;
   }
 `;
 
@@ -29,17 +33,33 @@ export const HeaderBlockContainer = styled.div`
   &:last-child {
     width: 8%;
   }
+
+  @media screen and (max-width: 800px) {
+    width: 20%;
+
+    &:last-child {
+      width: 10%;
+    }
+  }
 `;
 
 export const TotalContainer = styled.div`
   margin-top: 30px;
   margin-left: auto;
   font-size: 36px;
+
+  @media screen and (max-width: 800px) {
+    font-size: 16px;
+  }
 `;
 
 export const WarningContainer = styled.div`
   text-align: center;
   margin-top: 40px;
-  font-size: 24px;
+  font-size: 26px;
   color: red;
+
+  @media screen and (max-width: 800px) {
+    font-size: 16px;
+  }
 `;
