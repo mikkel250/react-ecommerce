@@ -2,5 +2,3 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## About
 This is a mock online clothing store built with React, and Redux on the frontend, Node/Express for the backend, Firebase for the database and User Authentication, and Stripe for mock payments.
-
-I deployed the production build to Heroku. See the live version on Heroku at https://amazecode-clothing.herokuapp.com
