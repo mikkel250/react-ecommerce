@@ -8,11 +8,11 @@
     "dotenv": "^8.1.0",
     "firebase": "^9.23.0",
     "sass": "^1.69.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "4.0.3",
+    "react-scripts": "5.0.1",
     "react-stripe-checkout": "^2.6.3",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
@@ -26,7 +26,8 @@
     "start": "NODE_OPTIONS='--openssl-legacy-provider' react-scripts start",
     "build": "NODE_OPTIONS='--openssl-legacy-provider' react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "react-scripts lint"
   },
   "eslintConfig": {
     "extends": "react-app"

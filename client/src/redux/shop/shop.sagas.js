@@ -8,8 +8,7 @@ import {
 
 import {
   fetchCollectionsSuccess,
-  fetchCollectionsFailure,
-  fetchCollectionsStart
+  fetchCollectionsFailure
 } from "./shop.actions";
 
 import ShopActionTypes from "./shop.types";
