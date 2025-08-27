@@ -7,5 +7,10 @@ healthcheckPath = "/"
 healthcheckTimeout = 300
 restartPolicyType = "on_failure"
 
+# Build configuration for full-stack app
+[build.steps]
+install = "npm install && cd client && npm install"
+build = "npm run build"
+
 [[services]]
 name = "react-ecommerce" 
