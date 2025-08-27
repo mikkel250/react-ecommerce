@@ -7,7 +7,7 @@
     "npm": ">=8.0.0"
   },
   "scripts": {
-    "client": "cd client && yarn start",
+    "client": "cd client && NODE_OPTIONS='--openssl-legacy-provider' npm start",
     "server": "nodemon server.js",
     "build": "cd client && npm install && NODE_OPTIONS='--openssl-legacy-provider' npm run build",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
@@ -24,6 +24,7 @@
     "stripe": "6.28.0"
   },
   "devDependencies": {
-    "concurrently": "^4.0.1"
+    "concurrently": "^4.0.1",
+    "nodemon": "^3.0.1"
   }
 }
