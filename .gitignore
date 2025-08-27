@@ -62,3 +62,7 @@ typings/
 
 #other
 client/notes.js
+
+ENVIRONMENT_VARIABLES.md
+FULL_STACK_DEPLOYMENT.md
+NETLIFY_DEPLOYMENT.md

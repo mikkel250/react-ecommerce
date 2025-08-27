@@ -4,11 +4,14 @@ import axios from "axios";
 
 const StripeCheckoutButton = ({ price }) => {
   const priceForStripe = price * 100;
-  const publishableKey = "pk_test_sLeRAsVNe6ssJc5lCC3PThGa00q0KWcjfZ";
+  const publishableKey = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY || "pk_test_sLeRAsVNe6ssJc5lCC3PThGa00q0KWcjfZ";
+  
+  // Use environment variable for API URL or fallback to relative path
+  const apiUrl = process.env.REACT_APP_API_URL || "";
 
   const onToken = token => {
     axios({
-      url: "payment",
+      url: `${apiUrl}/payment`,
       method: "post",
       data: {
         amount: priceForStripe,

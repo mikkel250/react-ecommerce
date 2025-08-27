@@ -1,9 +1,10 @@
 {
   "name": "amazecode-clothing-server",
   "version": "1.0.0",
+  "license": "MIT",
   "engines": {
-    "node": "10.15.3",
-    "npm": "6.9.0"
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
   },
   "scripts": {
     "client": "cd client && yarn start",
@@ -11,7 +12,7 @@
     "build": "cd client && npm run build",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "node server.js",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "dependencies": {
     "body-parser": "^1.18.3",

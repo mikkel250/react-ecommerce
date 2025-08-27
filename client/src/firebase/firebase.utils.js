@@ -7,13 +7,13 @@ import "firebase/auth";
 // const dbUrl = process.env.REACT_APP_FIREBASE_DB_URL;
 
 const config = {
-  apiKey: "AIzaSyBgaT7_Tj8ZZLZERjP8vMVJJn0FGzKcoVo",
-  authDomain: "clothing-db-61ccf.firebaseapp.com",
-  databaseURL: "https://clothing-db-61ccf.firebaseio.com",
-  projectId: "clothing-db-61ccf",
-  storageBucket: "clothing-db-61ccf.appspot.com",
-  messagingSenderId: "615782782215",
-  appId: "1:615782782215:web:d367bcdd2cbb9d4e"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY || "AIzaSyBgaT7_Tj8ZZLZERjP8vMVJJn0FGzKcoVo",
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN || "clothing-db-61ccf.firebaseapp.com",
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL || "https://clothing-db-61ccf.firebaseio.com",
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID || "clothing-db-61ccf",
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET || "clothing-db-61ccf.appspot.com",
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID || "615782782215",
+  appId: process.env.REACT_APP_FIREBASE_APP_ID || "1:615782782215:web:d367bcdd2cbb9d4e"
 };
 
 firebase.initializeApp(config);
