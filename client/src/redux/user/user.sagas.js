@@ -12,11 +12,18 @@ import {
 } from "./user.actions";
 
 import {
-  auth,
   googleProvider,
   createUserProfileDocument,
   getCurrentUser
 } from "../../firebase/firebase.utils";
+import { getDoc } from "firebase/firestore";
+import { 
+  signInWithPopup, 
+  signInWithEmailAndPassword, 
+  createUserWithEmailAndPassword,
+  signOut as firebaseSignOut
+} from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 export function* getSnapshotFromUserAuth(userAuth, additionalData) {
   try {
@@ -25,7 +32,7 @@ export function* getSnapshotFromUserAuth(userAuth, additionalData) {
       userAuth,
       additionalData
     );
-    const userSnapshot = yield userRef.get();
+    const userSnapshot = yield call(getDoc, userRef);
     yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
   } catch (error) {
     yield put(signInFailure(error));
@@ -34,7 +41,8 @@ export function* getSnapshotFromUserAuth(userAuth, additionalData) {
 
 export function* signInWithGoogle() {
   try {
-    const { user } = yield auth.signInWithPopup(googleProvider);
+    const auth = getAuth();
+    const { user } = yield call(signInWithPopup, auth, googleProvider);
     yield getSnapshotFromUserAuth(user);
   } catch (error) {
     yield put(signInFailure(error));
@@ -43,7 +51,8 @@ export function* signInWithGoogle() {
 
 export function* signInWithEmail({ payload: { email, password } }) {
   try {
-    const { user } = yield auth.signInWithEmailAndPassword(email, password);
+    const auth = getAuth();
+    const { user } = yield call(signInWithEmailAndPassword, auth, email, password);
     yield getSnapshotFromUserAuth(user);
   } catch (error) {
     yield put(signInFailure(error));
@@ -62,7 +71,8 @@ export function* isUserAthenticated() {
 
 export function* signOut() {
   try {
-    yield auth.signOut();
+    const auth = getAuth();
+    yield call(firebaseSignOut, auth);
     yield put(signOutSuccess());
   } catch (error) {
     yield put(signOutFailure(error));
@@ -71,7 +81,8 @@ export function* signOut() {
 
 export function* signUp({ payload: { displayName, email, password } }) {
   try {
-    const { user } = yield auth.createUserWithEmailAndPassword(email, password);
+    const auth = getAuth();
+    const { user } = yield call(createUserWithEmailAndPassword, auth, email, password);
 
     // yield createUserProfileDocument(user, { displayName });
     yield put(signUpSuccess({ user, additionalData: { displayName } }));
