@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "license": "MIT",
   "engines": {
-    "node": "18.x",
+    "node": ">=18.0.0",
     "npm": ">=8.0.0"
   },
   "scripts": {
     "client": "cd client && yarn start",
     "server": "nodemon server.js",
-    "build": "cd client && npm install && npm run build",
+    "build": "cd client && npm install && NODE_OPTIONS='--openssl-legacy-provider' npm run build",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "node server.js",
     "heroku-postbuild": "cd client && npm install && npm run build"

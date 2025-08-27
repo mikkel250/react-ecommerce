@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0d183a93.chunk.css",
+    "main.js": "/static/js/main.a53e6c76.chunk.js",
+    "main.js.map": "/static/js/main.a53e6c76.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.76c545d5.js",
+    "runtime-main.js.map": "/static/js/runtime-main.76c545d5.js.map",
+    "static/js/2.14d6b3e5.chunk.js": "/static/js/2.14d6b3e5.chunk.js",
+    "static/js/2.14d6b3e5.chunk.js.map": "/static/js/2.14d6b3e5.chunk.js.map",
+    "static/js/3.92de06d2.chunk.js": "/static/js/3.92de06d2.chunk.js",
+    "static/js/3.92de06d2.chunk.js.map": "/static/js/3.92de06d2.chunk.js.map",
+    "static/js/4.969773cf.chunk.js": "/static/js/4.969773cf.chunk.js",
+    "static/js/4.969773cf.chunk.js.map": "/static/js/4.969773cf.chunk.js.map",
+    "static/js/5.2cdeb258.chunk.js": "/static/js/5.2cdeb258.chunk.js",
+    "static/js/5.2cdeb258.chunk.js.map": "/static/js/5.2cdeb258.chunk.js.map",
+    "static/js/6.51073a10.chunk.js": "/static/js/6.51073a10.chunk.js",
+    "static/js/6.51073a10.chunk.js.map": "/static/js/6.51073a10.chunk.js.map",
+    "static/js/7.b37c09f5.chunk.js": "/static/js/7.b37c09f5.chunk.js",
+    "static/js/7.b37c09f5.chunk.js.map": "/static/js/7.b37c09f5.chunk.js.map",
+    "static/js/8.d4481316.chunk.js": "/static/js/8.d4481316.chunk.js",
+    "static/js/8.d4481316.chunk.js.map": "/static/js/8.d4481316.chunk.js.map",
+    "static/js/9.e6c58ce0.chunk.js": "/static/js/9.e6c58ce0.chunk.js",
+    "static/js/9.e6c58ce0.chunk.js.map": "/static/js/9.e6c58ce0.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.0d183a93.chunk.css.map": "/static/css/main.0d183a93.chunk.css.map",
+    "static/js/2.14d6b3e5.chunk.js.LICENSE.txt": "/static/js/2.14d6b3e5.chunk.js.LICENSE.txt",
+    "static/js/3.92de06d2.chunk.js.LICENSE.txt": "/static/js/3.92de06d2.chunk.js.LICENSE.txt",
+    "static/media/crown.3a4e2b15.svg": "/static/media/crown.3a4e2b15.svg",
+    "static/media/shopping-bag.a688874f.svg": "/static/media/shopping-bag.a688874f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.76c545d5.js",
+    "static/js/2.14d6b3e5.chunk.js",
+    "static/css/main.0d183a93.chunk.css",
+    "static/js/main.a53e6c76.chunk.js"
+  ]
+}

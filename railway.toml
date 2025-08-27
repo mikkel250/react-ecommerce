@@ -12,6 +12,6 @@ restartPolicyType = "on_failure"
 install = "npm install && cd client && npm install --legacy-peer-deps"
 build = "npm run build"
 
-# Force Node.js version to avoid compatibility issues
+# Use modern Node.js version for updated dependencies
 [build.environment]
-NODE_VERSION = "18" 
+NODE_VERSION = "20" 
