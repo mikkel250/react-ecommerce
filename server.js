@@ -19,6 +19,11 @@ app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 app.use(cors());
 
+// Add this before the catch-all route
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "OK", timestamp: new Date().toISOString() });
+});
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
 
