@@ -16,6 +16,7 @@ const port = process.env.PORT || 7777;
 console.log(`Environment: ${process.env.NODE_ENV}`);
 console.log(`Port: ${port}`);
 console.log(`Current directory: ${__dirname}`);
+console.log(`All environment variables:`, Object.keys(process.env).filter(key => key.includes('PORT') || key.includes('RAILWAY')).map(key => `${key}=${process.env[key]}`));
 
 app.use(compression());
 app.use(bodyParser.json());
@@ -51,6 +52,12 @@ app.get("/health", (req, res) => {
       timestamp: new Date().toISOString()
     });
   }
+});
+
+// Simple test endpoint
+app.get("/test", (req, res) => {
+  console.log("Test endpoint hit");
+  res.status(200).json({ message: "Server is responding!", timestamp: new Date().toISOString() });
 });
 
 // Payment route - also before catch-all

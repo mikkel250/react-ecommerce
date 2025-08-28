@@ -9,7 +9,7 @@
   "scripts": {
     "client": "cd client && NODE_OPTIONS='--openssl-legacy-provider' npm start",
     "server": "nodemon server.js",
-    "build": "cd client && npm install && NODE_OPTIONS='--openssl-legacy-provider' npm run build",
+    "build": "cd client && NODE_OPTIONS='--openssl-legacy-provider' npm run build",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "node server.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
