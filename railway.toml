@@ -10,7 +10,7 @@ restartPolicyType = "on_failure"
 # Build configuration for full-stack app
 [build.steps]
 install = "npm install && cd client && npm install --legacy-peer-deps"
-build = "cd client && npm run build"
+build = "npm run build && cd client && NODE_OPTIONS='--openssl-legacy-provider' npm run build"
 
 # Use modern Node.js version for updated dependencies
 [build.environment]
