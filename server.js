@@ -24,7 +24,7 @@ app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 app.use(cors());
 
-// Add this before the catch-all route
+// Health check route - MUST come FIRST, before any catch-all routes
 app.get("/health", (req, res) => {
   console.log("Health check request received");
   const fs = require('fs');
@@ -53,17 +53,7 @@ app.get("/health", (req, res) => {
   }
 });
 
-if (process.env.NODE_ENV === "production") {
-  const buildPath = path.join(__dirname, "client/build");
-  console.log(`Serving static files from: ${buildPath}`);
-  
-  app.use(express.static(buildPath));
-
-  app.get("*", function(req, res) {
-    res.sendFile(path.join(buildPath, "index.html"));
-  });
-}
-
+// Payment route - also before catch-all
 app.post("/payment", (req, res) => {
   const body = {
     source: req.body.token.id,
@@ -80,12 +70,25 @@ app.post("/payment", (req, res) => {
   });
 });
 
+// Service worker route
+app.get("/service-worker.js", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "..", "build", "service-worker.js"));
+});
+
+// Static files and catch-all route - MUST come LAST
+if (process.env.NODE_ENV === "production") {
+  const buildPath = path.join(__dirname, "client/build");
+  console.log(`Serving static files from: ${buildPath}`);
+  
+  app.use(express.static(buildPath));
+
+  app.get("*", function(req, res) {
+    res.sendFile(path.join(buildPath, "index.html"));
+  });
+}
+
 app.listen(port, '0.0.0.0', error => {
   if (error) throw error;
   console.log("Server running on port " + port);
   console.log("Server bound to 0.0.0.0 (all interfaces)");
-});
-
-app.get("/service-worker.js", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "..", "build", "service-worker.js"));
 });
