@@ -38,6 +38,8 @@ app.get("/health", (req, res) => {
 // Simple test endpoint
 app.get("/test", (req, res) => {
   console.log("Test endpoint hit");
+  console.log("Request headers:", req.headers);
+  console.log("Request URL:", req.url);
   res.status(200).json({ message: "Server is responding!", timestamp: new Date().toISOString() });
 });
 
@@ -71,6 +73,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(buildPath));
 
   app.get("*", function(req, res) {
+    console.log(`Catch-all route hit: ${req.method} ${req.url}`);
     res.sendFile(path.join(buildPath, "index.html"));
   });
 }
