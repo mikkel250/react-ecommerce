@@ -10,8 +10,11 @@ restartPolicyType = "on_failure"
 # Build configuration for full-stack app
 [build.steps]
 install = "npm install && cd client && npm install --legacy-peer-deps"
-build = "npm run build"
+build = "cd client && npm run build"
 
 # Use modern Node.js version for updated dependencies
 [build.environment]
-NODE_VERSION = "20" 
+NODE_VERSION = "20"
+
+[deploy.environment]
+NODE_ENV = "production" 

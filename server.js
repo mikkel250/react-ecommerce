@@ -12,6 +12,11 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const app = express();
 const port = process.env.PORT || 7777;
 
+// Add some debugging for Railway deployment
+console.log(`Environment: ${process.env.NODE_ENV}`);
+console.log(`Port: ${port}`);
+console.log(`Current directory: ${__dirname}`);
+
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,14 +26,37 @@ app.use(cors());
 
 // Add this before the catch-all route
 app.get("/health", (req, res) => {
-  res.status(200).json({ status: "OK", timestamp: new Date().toISOString() });
+  const fs = require('fs');
+  const buildPath = path.join(__dirname, "client/build");
+  
+  try {
+    // Check if build directory exists
+    const buildExists = fs.existsSync(buildPath);
+    
+    res.status(200).json({ 
+      status: "OK", 
+      timestamp: new Date().toISOString(),
+      environment: process.env.NODE_ENV || "development",
+      buildExists: buildExists,
+      port: port
+    });
+  } catch (error) {
+    res.status(500).json({ 
+      status: "ERROR", 
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
 });
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client/build")));
+  const buildPath = path.join(__dirname, "client/build");
+  console.log(`Serving static files from: ${buildPath}`);
+  
+  app.use(express.static(buildPath));
 
   app.get("*", function(req, res) {
-    res.sendFile(path.join(__dirname, "client/build", "index.html"));
+    res.sendFile(path.join(buildPath, "index.html"));
   });
 }
 
