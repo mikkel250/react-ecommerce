@@ -28,30 +28,11 @@ app.use(cors());
 // Health check route - MUST come FIRST, before any catch-all routes
 app.get("/health", (req, res) => {
   console.log("Health check request received");
-  const fs = require('fs');
-  const buildPath = path.join(__dirname, "client/build");
-  
-  try {
-    // Check if build directory exists
-    const buildExists = fs.existsSync(buildPath);
-    
-    console.log(`Health check: buildExists=${buildExists}, port=${port}`);
-    
-    res.status(200).json({ 
-      status: "OK", 
-      timestamp: new Date().toISOString(),
-      environment: process.env.NODE_ENV || "development",
-      buildExists: buildExists,
-      port: port
-    });
-  } catch (error) {
-    console.error("Health check error:", error);
-    res.status(500).json({ 
-      status: "ERROR", 
-      error: error.message,
-      timestamp: new Date().toISOString()
-    });
-  }
+  res.status(200).json({ 
+    status: "OK", 
+    timestamp: new Date().toISOString(),
+    port: port
+  });
 });
 
 // Simple test endpoint
@@ -94,8 +75,8 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.listen(port, '0.0.0.0', error => {
+app.listen(port, error => {
   if (error) throw error;
   console.log("Server running on port " + port);
-  console.log("Server bound to 0.0.0.0 (all interfaces)");
+  console.log("Server bound to all interfaces");
 });
