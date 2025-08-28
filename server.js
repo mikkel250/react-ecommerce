@@ -26,12 +26,15 @@ app.use(cors());
 
 // Add this before the catch-all route
 app.get("/health", (req, res) => {
+  console.log("Health check request received");
   const fs = require('fs');
   const buildPath = path.join(__dirname, "client/build");
   
   try {
     // Check if build directory exists
     const buildExists = fs.existsSync(buildPath);
+    
+    console.log(`Health check: buildExists=${buildExists}, port=${port}`);
     
     res.status(200).json({ 
       status: "OK", 
@@ -41,6 +44,7 @@ app.get("/health", (req, res) => {
       port: port
     });
   } catch (error) {
+    console.error("Health check error:", error);
     res.status(500).json({ 
       status: "ERROR", 
       error: error.message,
@@ -76,9 +80,10 @@ app.post("/payment", (req, res) => {
   });
 });
 
-app.listen(port, error => {
+app.listen(port, '0.0.0.0', error => {
   if (error) throw error;
   console.log("Server running on port " + port);
+  console.log("Server bound to 0.0.0.0 (all interfaces)");
 });
 
 app.get("/service-worker.js", (req, res) => {
