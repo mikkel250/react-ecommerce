@@ -9,6 +9,12 @@
       }
     }
   ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/client/build/$1"
+    }
+  ],
   "env": {
     "REACT_APP_FIREBASE_API_KEY": "AIzaSyBgaT7_Tj8ZZLZERjP8vMVJJn0FGzKcoVo",
     "REACT_APP_FIREBASE_AUTH_DOMAIN": "clothing-db-61ccf.firebaseapp.com",
