@@ -37,6 +37,8 @@ Go to Project Settings → Environment Variables and add:
 
 **Backend Connection:**
 - [ ] `REACT_APP_API_URL` = `https://your-railway-app.railway.app` (replace with your actual Railway URL)
+  - **Get this from your Railway dashboard** - it should look like `https://your-app-name.railway.app`
+  - **This is critical** - without this, payments won't work!
 
 ### 4. Deploy
 - [ ] Click "Deploy"
