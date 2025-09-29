@@ -24,7 +24,7 @@
     "REACT_APP_FIREBASE_MESSAGING_SENDER_ID": "615782782215",
     "REACT_APP_FIREBASE_APP_ID": "1:615782782215:web:d367bcdd2cbb9d4e",
     "REACT_APP_STRIPE_PUBLISHABLE_KEY": "pk_test_sLeRAsVNe6ssJc5lCC3PThGa00q0KWcjfZ",
-    "REACT_APP_API_URL": "https://your-railway-app.railway.app"
+    "REACT_APP_API_URL": "https://react-ecommerce-production-b661.up.railway.app"
   },
   "functions": {
     "client/build/static/js/*.js": {
