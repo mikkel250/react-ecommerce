@@ -26,11 +26,15 @@
     "REACT_APP_STRIPE_PUBLISHABLE_KEY": "pk_test_sLeRAsVNe6ssJc5lCC3PThGa00q0KWcjfZ",
     "REACT_APP_API_URL": "https://react-ecommerce-production-b661.up.railway.app"
   },
-  "functions": {
-    "client/build/static/js/*.js": {
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      }
+  "headers": [
+    {
+      "source": "/static/js/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
-  }
+  ]
 }
