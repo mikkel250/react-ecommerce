@@ -7,12 +7,16 @@ const StripeCheckoutButton = ({ price }) => {
   const publishableKey = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY || "pk_test_sLeRAsVNe6ssJc5lCC3PThGa00q0KWcjfZ";
   
   // Use environment variable for API URL or fallback to relative path
+  // For Vercel deployment, you'll need to set this to your backend URL
   const apiUrl = process.env.REACT_APP_API_URL || "";
 
   const onToken = token => {
     axios({
       url: `${apiUrl}/payment`,
       method: "post",
+      headers: {
+        'Content-Type': 'application/json',
+      },
       data: {
         amount: priceForStripe,
         token: token
@@ -22,7 +26,7 @@ const StripeCheckoutButton = ({ price }) => {
         alert("Payment Succesful!");
       })
       .catch(error => {
-        console.log("Payment Error: ", JSON.parse(error));
+        console.log("Payment Error: ", error);
         alert(
           "There was an issue with your payment. Please make sure you use the provided test credit card."
         );
