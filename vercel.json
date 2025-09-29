@@ -1,17 +1,11 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "client/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build"
-      }
-    }
-  ],
+  "buildCommand": "cd client && npm run build",
+  "outputDirectory": "client/build",
+  "installCommand": "npm install",
   "rewrites": [
     {
-      "source": "/((?!static/).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ],
@@ -25,16 +19,5 @@
     "REACT_APP_FIREBASE_APP_ID": "1:615782782215:web:d367bcdd2cbb9d4e",
     "REACT_APP_STRIPE_PUBLISHABLE_KEY": "pk_test_sLeRAsVNe6ssJc5lCC3PThGa00q0KWcjfZ",
     "REACT_APP_API_URL": "https://react-ecommerce-production-b661.up.railway.app"
-  },
-  "headers": [
-    {
-      "source": "/static/js/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    }
-  ]
+  }
 }
