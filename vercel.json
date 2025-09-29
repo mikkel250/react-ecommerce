@@ -1,23 +1,8 @@
 {
-  "version": 2,
-  "buildCommand": "cd client && npm install && npm run build",
-  "outputDirectory": "client/build",
-  "installCommand": "npm install",
   "rewrites": [
     {
-      "source": "/((?!static/).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
-  ],
-  "env": {
-    "REACT_APP_FIREBASE_API_KEY": "AIzaSyBgaT7_Tj8ZZLZERjP8vMVJJn0FGzKcoVo",
-    "REACT_APP_FIREBASE_AUTH_DOMAIN": "clothing-db-61ccf.firebaseapp.com",
-    "REACT_APP_FIREBASE_DATABASE_URL": "https://clothing-db-61ccf.firebaseio.com",
-    "REACT_APP_FIREBASE_PROJECT_ID": "clothing-db-61ccf",
-    "REACT_APP_FIREBASE_STORAGE_BUCKET": "clothing-db-61ccf.appspot.com",
-    "REACT_APP_FIREBASE_MESSAGING_SENDER_ID": "615782782215",
-    "REACT_APP_FIREBASE_APP_ID": "1:615782782215:web:d367bcdd2cbb9d4e",
-    "REACT_APP_STRIPE_PUBLISHABLE_KEY": "pk_test_sLeRAsVNe6ssJc5lCC3PThGa00q0KWcjfZ",
-    "REACT_APP_API_URL": "https://react-ecommerce-production-b661.up.railway.app"
-  }
+  ]
 }
