@@ -1,0 +1,74 @@
+name: Security Audit
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+  schedule:
+    - cron: '0 9 * * 1'
+
+jobs:
+  audit:
+    name: npm audit matrix
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        directory: ['.', 'client']
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: '${{ matrix.directory }}/package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ${{ matrix.directory }}
+
+      - name: Run npm audit
+        run: |
+          echo "## Security Audit Report - ${{ matrix.directory }}" >> $GITHUB_STEP_SUMMARY
+          npm audit --audit-level=high 2>&1 | tee audit-report.txt || true
+
+          # Fail on high/critical vulnerabilities
+          npm audit --audit-level=high
+        working-directory: ${{ matrix.directory }}
+
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-report-${{ matrix.directory == '.' && 'root' || 'client' }}
+          path: ${{ matrix.directory }}/audit-report.txt
+          retention-days: 30
+
+  trivy-scan:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    needs: audit
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: fs
+          scan-ref: '.'
+          format: sarif
+          output: trivy-results.sarif
+          severity: HIGH,CRITICAL
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: trivy-results.sarif
